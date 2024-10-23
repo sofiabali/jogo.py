@@ -95,7 +95,7 @@ def movimentar_bola(bola, blocos):
         movimento_bola[1] = -movimento_bola[1]
 
     if bola.y + tamanho_bola >= tamanho_da_tela[1]:
-        return False  # A bola caiu
+        return False 
 
     if jogador.collidepoint(bola.x + tamanho_bola // 2, bola.y + tamanho_bola):
         movimento_bola[1] = -movimento_bola[1]
