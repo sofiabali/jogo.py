@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Divertido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; 
+            background-image: url('fliperama.jpg'); 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: rgb(247, 247, 247); 
+        }
+        h1 {
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 56px; 
+            color: #142d9b; 
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);  
+        }
+        .descricao {
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin: 20px auto; 
+            width: fit-content;
+        }
+        p {
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin: 0; 
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 22px;
+            color: white;
+            background-color: #1525b1; 
+            border: none;
+            border-radius: 10px; 
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s; 
+        }
+        button:hover {
+            background-color: #131c6d; 
+            transform: scale(1.1); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sorte ou Azar </h1>
+    
+    <div class="descricao">
+        <p>Para jogar, clique no botão abaixo. O jogo consiste em acumular moedas e passar níveis. Mostre suas habilidades e divirta-se!</p>
+    </div>
+
+    <button onclick="iniciarJogo()">Iniciar Jogo</button>
+
+    <script>
+        function iniciarJogo() {
+            alert("O jogo está sendo iniciado!");
+        }
+    </script>
+
+</body>
+</html>
