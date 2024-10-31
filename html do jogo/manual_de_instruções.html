@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Divertido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; 
+            text-align: center;
+            padding: 50px;
+            color: rgb(247, 247, 247); 
+            position: relative; 
+        }
+        .background {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('fliperama.jpg'); 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            filter: blur(5px); 
+            z-index: -1; 
+        }
+        h1 {
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 56px; 
+            color: #142d9b; 
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);  
+        }
+        .conteudo {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px; 
+            padding: 20px; 
+            margin: 20px auto; 
+            width: fit-content;
+        }
+        p {
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+        }
+        .botao {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #142d9b; 
+            color: white; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .botao:hover {
+            background-color: #04035f; 
+            transform: translateY(-2px);
+        }
+        li{
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+    <h1>Sorte ou Azar</h1>
+    
+    <div class="conteudo" id="conteudo">
+        <p>MANUAL:</p>
+        <p>Bem-vindo ao nosso emocionante jogo de plataforma! Prepare-se para uma aventura cheia de desafios.</p>
+        
+        <p>Como Começar:</p>
+        <p>Para iniciar sua jornada, clique no botão "Start" na tela principal.</p>
+
+        <button class="botao" onclick="proximoConteudo()">Próximo</button>
+    </div>
+
+    <script>
+        let etapa = 0;
+
+        const conteudos = [
+          `<p>MANUAL:</p>
+           <p>Bem-vindo ao nosso emocionante jogo de plataforma! Prepare-se para uma aventura cheia de desafios.</p>
+           <p>Como Começar:</p>
+           <p>Para iniciar sua jornada, clique no botão "Start" na tela principal.</p>`,
+
+          `<p>Controles do Jogo:</p>
+           <p>- Mover para a Direita: Pressione a seta para a direita (→).</p>
+           <p>- Mover para a Esquerda: Pressione a seta para a esquerda (←).</p>
+           <p>- Pular: Pressione a barra de espaço (Espaço).</p>`,
+
+          `<p>Estrutura das Fases:</p>
+           <p>As fases do jogo são variadas e oferecem uma experiência única a cada nível.</p>`,
+
+          `<p>Objetivo do Jogo:</p>
+           <p>O seu principal objetivo é completar todos os níveis, coletando o máximo de moedas possível.</p>`,
+
+          `<p>Morte e Retorno:</p>
+           <p>Quando seu personagem morrer, você terá a chance de voltar para a fase em que estava.</p>`,
+
+          `<p>Fase Final:</p>
+           <p>A jornada termina na 7ª fase.<br>Ao completá-la, será exibida a mensagem "You Win!".</p>`,
+
+          `<p>Dicas e Estratégias:</p>
+           <ul style="list-style-type:none;">
+               <li>- Pratique seus Movimentos.</li>
+               <li>- Coleta de Moedas.</li>
+               <li>- Observação é Fundamental.</li>
+               <li>- Utilize a "Morte" a seu Favor.</li>
+           </ul>`,
+
+          `<p>Conclusão:</p>
+           <p>Divirta-se nesta jornada emocionante! Boa sorte!</p>`
+        ];
+
+        function proximoConteudo() {
+          etapa++;
+          if (etapa >= conteudos.length) {
+              etapa = conteudos.length - 1; 
+              mostrarBotaoIniciar(); 
+          } else {
+              document.getElementById("conteudo").innerHTML = conteudos[etapa] + '<button class="botao" onclick="proximoConteudo()">Próximo</button>';
+          }
+        }
+
+    </script>
+
+</body>
+</html>
