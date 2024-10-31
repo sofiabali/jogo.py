@@ -101,7 +101,7 @@ class Button():
 
 		return action
 
-
+#implementa a lógica necessária para movimentação, animações e interações do jogador com o ambiente do jogo.
 class Player():
 	def __init__(self, x, y):
 		self.reset(x, y)
@@ -216,6 +216,7 @@ class Player():
 		self.images_left = []
 		self.index = 0
 		self.counter = 0
+		#imagens espelhadas do jogador, para criar a animação de movimento para a esquerda, e ambas as versões (direita e esquerda).
 		for num in range(1, 5):
 			img_right = pygame.image.load(f'guy{num}.png')
 			img_right = pygame.transform.scale(img_right, (40, 80))
@@ -235,7 +236,7 @@ class Player():
 		self.in_air = True
 
 
-
+#criar o ambiente do jogo, carregando tiles e objetos a partir de uma estrutura de dados
 class World():
 	def __init__(self, data):
 		self.tile_list = []
@@ -288,7 +289,7 @@ class World():
 			screen.blit(tile[0], tile[1])
 
 
-
+#cria um objeto inimigo, configurando sua imagem, posição e direção de movimento.
 class Enemy(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
@@ -298,7 +299,8 @@ class Enemy(pygame.sprite.Sprite):
 		self.rect.y = y
 		self.move_direction = 1
 		self.move_counter = 0
-
+		
+	#a plataforma vai se mover até certo limite, depois inverte o lado
 	def update(self):
 		self.rect.x += self.move_direction
 		self.move_counter += 1
@@ -306,7 +308,7 @@ class Enemy(pygame.sprite.Sprite):
 			self.move_direction *= -1
 			self.move_counter *= -1
 
-
+#posição e movimentação das plataformas
 class Platform(pygame.sprite.Sprite):
 	def __init__(self, x, y, move_x, move_y):
 		pygame.sprite.Sprite.__init__(self)
@@ -384,7 +386,7 @@ restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 100, restar
 start_button = Button(screen_width // 2 - 350, screen_height // 2, start_img)
 exit_button = Button(screen_width // 2 + 150, screen_height // 2, exit_img)
 
-
+#loop principal
 run = True
 while run:
 
