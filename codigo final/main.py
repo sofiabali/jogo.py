@@ -14,14 +14,15 @@ fps = 60
 screen_width = 1000
 screen_height = 1000
 
+#tela
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('game')
 
-
+#fontes
 font = pygame.font.SysFont('Bauhaus 93', 70)
 font_score = pygame.font.SysFont('Bauhaus 93', 30)
 
-
+#principais variaveis
 tile_size = 50
 game_over = 0
 main_menu = True
@@ -29,17 +30,18 @@ level = 3
 max_levels = 7
 score = 0
 
-
+#cores do texto
 white = (255, 255, 255)
 blue = (0, 0, 255)
 
-
+#carregamento de imagens
 sun_img = pygame.image.load('sun.png')
 bg_img = pygame.image.load('sky.png')
 restart_img = pygame.image.load('restart_btn.png')
 start_img = pygame.image.load('start_btn.png')
 exit_img = pygame.image.load('exit_btn.png')
 
+#carregamento de sons
 pygame.mixer.music.load('music.wav')
 pygame.mixer.music.play(-1, 0.0, 5000)
 coin_fx = pygame.mixer.Sound('img_coin.wav')
@@ -49,12 +51,12 @@ jump_fx.set_volume(0.5)
 game_over_fx = pygame.mixer.Sound('img_game_over.wav')
 game_over_fx.set_volume(0.5)
 
-
+#desenha o texto
 def draw_text(text, font, text_col, x, y):
 	img = font.render(text, True, text_col)
 	screen.blit(img, (x, y))
 
-
+#reinicia o nivel
 def reset_level(level):
 	player.reset(100, screen_height - 130)
 	blob_group.empty()
@@ -62,15 +64,17 @@ def reset_level(level):
 	coin_group.empty()
 	lava_group.empty()
 	exit_group.empty()
+	#dados do nivel e criação do mundo
 	if path.exists(f'level{level}_data'):
 		pickle_in = open(f'level{level}_data', 'rb')
 		world_data = pickle.load(pickle_in)
+	#pontuação da moeda
 	world = World(world_data)
 	score_coin = Coin(tile_size // 2, tile_size // 2)
 	coin_group.add(score_coin)
 	return world
 
-
+#clique dos botões 
 class Button():
 	def __init__(self, x, y, image):
 		self.image = image
@@ -78,7 +82,8 @@ class Button():
 		self.rect.x = x
 		self.rect.y = y
 		self.clicked = False
-
+		
+     #indicando qual tecla sera pressionada
 	def draw(self):
 		action = False
 
